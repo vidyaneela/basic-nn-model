@@ -10,7 +10,8 @@ Explain the problem statement
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![neural](https://user-images.githubusercontent.com/94169318/226155887-07d323a4-9f6c-4fa4-ae27-339e82f1229a.jpeg)
+
 
 ## DESIGN STEPS
 
@@ -43,18 +44,62 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
+```
+from google.colab import auth
+import gspread
+from google.auth import default
+import pandas as pd
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+worksheet = gc.open('my data1').sheet1
+rows = worksheet.get_all_values()
+df = pd.DataFrame(rows[1:], columns=rows[0])
+df = df.astype({'INPUT':'float'})
+df = df.astype({'OUTPUT':'float'})
+df
+import pandas as pd
+from sklearn.model_selection import train_test_split
+# To scale
+from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+X = df[['INPUT']].values
+y = df[['OUTPUT']].values
 
-Include your code here
+X
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size = 0.33,random_state=33)
+Scaler = MinMaxScaler()
+Scaler.fit(X_train)
+X_train1 = Scaler.transform(X_train)model = Sequential([
+    Dense(5,activation = 'relu'),
+    Dense(10,activation = 'relu'),
+    Dense(1)
+])
+model.compile(optimizer='rmsprop',loss = 'mse')
+model.fit(X_train1,y_train,epochs=5000)
+loss_df = pd.DataFrame(model.history.history)
+loss_df.plot()
+X_test1 = Scaler.transform(X_test)
+model.evaluate(X_test1,y_test)
+model.evaluate(X_test1,y_test)
+## new prediction
+X_n1 = [[500]]
+X_n1_1 = Scaler.transform(X_n1)
+model.predict(X_n1_1)
+```
 
 ## Dataset Information
 
-Include screenshot of the dataset
+![image](https://user-images.githubusercontent.com/94169318/226155803-0ef7d4a0-ca4b-41b7-9328-7920c97dbf51.png)
+
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![image](https://user-images.githubusercontent.com/94169318/226155820-295c3b67-5611-499a-b5a2-06a4067982e9.png)
+
 
 ### Test Data Root Mean Squared Error
 
@@ -64,4 +109,5 @@ Find the test data root mean squared error
 
 Include your sample input and output here
 
-## RESULT
+## RESULT:
+Thus a neural network regression model for the given dataset is written and executed successfully.
