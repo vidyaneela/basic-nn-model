@@ -10,7 +10,7 @@ Explain the problem statement
 
 ## Neural Network Model
 
-![neural](https://user-images.githubusercontent.com/94169318/226155887-07d323a4-9f6c-4fa4-ae27-339e82f1229a.jpeg)
+![image](https://user-images.githubusercontent.com/94169318/226172105-440bea62-15c2-40f2-b313-36f53c0c5fa5.png)
 
 
 ## DESIGN STEPS
@@ -44,6 +44,10 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
+```
+Developed by: Vidya Neela M
+Register No. : 212221230120
+```
 ```
 from google.colab import auth
 import gspread
@@ -103,11 +107,13 @@ model.predict(X_n1_1)
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+
+![image](https://user-images.githubusercontent.com/94169318/226172236-e3899b91-7cf9-41f5-92ec-939e9dcac0d7.png)
+
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![image](https://user-images.githubusercontent.com/94169318/226172214-dd85c57e-7e93-4b5e-a042-e4dce2921a0a.png)
 
 ## RESULT:
 Thus a neural network regression model for the given dataset is written and executed successfully.
